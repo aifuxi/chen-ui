@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "title": "Chen Serif Dialog",
+  "description": "Dialog primitives for the Chen Serif design system built on @base-ui/react/dialog.",
+  "dependencies": [
+    "@base-ui/react@^1.3.0",
+    "lucide-react@^1.7.0"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
+  "files": [
+    {
+      "path": "components/ui/dialog.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Dialog as DialogPrimitive } from \"@base-ui/react/dialog\"\nimport { X } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { Button } from \"./button\"\n\nconst Dialog = DialogPrimitive.Root\nconst DialogTrigger = DialogPrimitive.Trigger\nconst DialogPortal = DialogPrimitive.Portal\nconst DialogClose = DialogPrimitive.Close\n\nfunction DialogBackdrop({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogPrimitive.Backdrop>) {\n  return (\n    <DialogPrimitive.Backdrop\n      className={cn(\n        \"fixed inset-0 min-h-dvh bg-black/70 backdrop-blur-sm transition-opacity duration-[var(--duration-fast)] ease-[var(--ease-smooth)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 supports-[-webkit-touch-callout:none]:absolute\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction DialogContent({\n  className,\n  children,\n  showCloseButton = true,\n  ...props\n}: React.ComponentProps<typeof DialogPrimitive.Popup> & {\n  showCloseButton?: boolean\n}) {\n  return (\n    <DialogPortal>\n      <DialogBackdrop />\n      <DialogPrimitive.Popup\n        className={cn(\n          \"fixed top-1/2 left-1/2 z-50 w-[min(32rem,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 rounded-[var(--radius-lg)] border border-white/10 bg-[rgba(10,10,10,0.95)] p-6 text-foreground shadow-[var(--shadow-xl)] outline-none transition-all duration-[var(--duration-normal)] ease-[var(--ease-smooth)] data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0\",\n          className\n        )}\n        {...props}\n      >\n        {showCloseButton ? (\n          <DialogClose\n            render={\n              <Button\n                variant=\"ghost\"\n                size=\"icon\"\n                className=\"absolute top-4 right-4 size-9 rounded-[var(--radius-sm)]\"\n              />\n            }\n          >\n            <X />\n          </DialogClose>\n        ) : null}\n        {children}\n      </DialogPrimitive.Popup>\n    </DialogPortal>\n  )\n}\n\nfunction DialogHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div className={cn(\"mb-6 flex flex-col gap-2\", className)} {...props} />\n}\n\nfunction DialogTitle({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogPrimitive.Title>) {\n  return (\n    <DialogPrimitive.Title\n      className={cn(\"font-serif text-3xl font-semibold tracking-tight\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction DialogDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogPrimitive.Description>) {\n  return (\n    <DialogPrimitive.Description\n      className={cn(\"text-sm leading-6 text-muted-foreground\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction DialogFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"mt-6 flex flex-wrap justify-end gap-3\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Dialog,\n  DialogBackdrop,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogPortal,\n  DialogTitle,\n  DialogTrigger,\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog.tsx"
+    }
+  ],
+  "docs": "https://base-ui.com/react/components/dialog.md",
+  "type": "registry:ui"
+}

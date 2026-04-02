@@ -1,0 +1,227 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chen-serif",
+  "title": "Chen Serif",
+  "description": "Installs the Chen Serif design system tokens, global styles, and core UI components.",
+  "dependencies": [
+    "@base-ui/react@^1.3.0",
+    "class-variance-authority@^0.7.1",
+    "lucide-react@^1.7.0"
+  ],
+  "files": [
+    {
+      "path": "registry/chen-serif-fonts.css",
+      "content": "/* inter-latin-wght-normal */\n@font-face {\n  font-family: \"Inter Variable\";\n  font-style: normal;\n  font-display: swap;\n  font-weight: 100 900;\n  src: url(\"https://cdn.jsdelivr.net/npm/@fontsource-variable/inter@5.2.8/files/inter-latin-wght-normal.woff2\")\n    format(\"woff2-variations\");\n  unicode-range:\n    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,\n    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,\n    U+2215, U+FEFF, U+FFFD;\n}\n\n/* newsreader-latin-wght-normal */\n@font-face {\n  font-family: \"Newsreader Variable\";\n  font-style: normal;\n  font-display: swap;\n  font-weight: 200 800;\n  src: url(\"https://cdn.jsdelivr.net/npm/@fontsource-variable/newsreader@5.2.10/files/newsreader-latin-wght-normal.woff2\")\n    format(\"woff2-variations\");\n  unicode-range:\n    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,\n    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,\n    U+2215, U+FEFF, U+FFFD;\n}\n\n/* space-grotesk-latin-wght-normal */\n@font-face {\n  font-family: \"Space Grotesk Variable\";\n  font-style: normal;\n  font-display: swap;\n  font-weight: 300 700;\n  src: url(\"https://cdn.jsdelivr.net/npm/@fontsource-variable/space-grotesk@5.2.10/files/space-grotesk-latin-wght-normal.woff2\")\n    format(\"woff2-variations\");\n  unicode-range:\n    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,\n    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,\n    U+2215, U+FEFF, U+FFFD;\n}\n",
+      "type": "registry:file",
+      "target": "app/chen-serif-fonts.css"
+    },
+    {
+      "path": "components/ui/avatar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Avatar as AvatarPrimitive } from \"@base-ui/react/avatar\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst avatarVariants = cva(\n  \"inline-flex items-center justify-center overflow-hidden rounded-[var(--radius)] bg-secondary text-foreground font-semibold select-none\",\n  {\n    variants: {\n      size: {\n        sm: \"size-8 text-xs\",\n        default: \"size-10 text-sm\",\n        lg: \"size-16 text-xl\",\n      },\n    },\n    defaultVariants: {\n      size: \"default\",\n    },\n  }\n)\n\ntype AvatarProps = React.ComponentProps<typeof AvatarPrimitive.Root> &\n  VariantProps<typeof avatarVariants>\n\nfunction Avatar({ className, size, ...props }: AvatarProps) {\n  return (\n    <AvatarPrimitive.Root\n      className={cn(avatarVariants({ size }), className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarImage({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Image>) {\n  return (\n    <AvatarPrimitive.Image\n      className={cn(\"size-full object-cover\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarFallback({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {\n  return (\n    <AvatarPrimitive.Fallback\n      className={cn(\"flex size-full items-center justify-center\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarRing({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"inline-flex rounded-[var(--radius)] bg-[linear-gradient(135deg,var(--primary),var(--foreground))] p-0.5\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Avatar, AvatarFallback, AvatarImage, AvatarRing }\n",
+      "type": "registry:ui",
+      "target": "components/ui/avatar.tsx"
+    },
+    {
+      "path": "components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-[var(--radius-sm)] border px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-colors duration-[var(--duration-normal)] ease-[var(--ease-smooth)]\",\n  {\n    variants: {\n      variant: {\n        default: \"border-border bg-secondary text-foreground\",\n        primary:\n          \"border-[rgba(16,185,129,0.3)] bg-[rgba(16,185,129,0.15)] text-primary\",\n        destructive:\n          \"border-[rgba(239,68,68,0.3)] bg-[rgba(239,68,68,0.15)] text-destructive\",\n        warning:\n          \"border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.15)] text-[#f59e0b]\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\ntype BadgeProps = React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants>\n\nfunction Badge({ className, variant, ...props }: BadgeProps) {\n  return (\n    <span className={cn(badgeVariants({ variant }), className)} {...props} />\n  )\n}\n\nexport { Badge, badgeVariants, type BadgeProps }\n",
+      "type": "registry:ui",
+      "target": "components/ui/badge.tsx"
+    },
+    {
+      "path": "components/ui/button.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Button as ButtonPrimitive } from \"@base-ui/react/button\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst buttonVariants = cva(\n  \"group/button inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-[var(--radius)] border border-transparent bg-clip-padding text-sm font-medium shadow-sm outline-none select-none transition-[transform,background-color,border-color,box-shadow,color,filter] duration-[var(--duration-normal)] ease-[var(--ease-smooth)] focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"bg-primary text-primary-foreground shadow-[0_0_24px_rgba(16,185,129,0.2)] hover:brightness-110 hover:-translate-y-0.5\",\n        destructive:\n          \"bg-destructive text-foreground hover:brightness-110\",\n        outline:\n          \"border-border bg-transparent text-foreground hover:border-white/20 hover:bg-secondary\",\n        secondary:\n          \"bg-secondary text-secondary-foreground hover:bg-[rgba(255,255,255,0.12)]\",\n        ghost:\n          \"bg-transparent text-foreground shadow-none hover:bg-secondary\",\n        link: \"border-transparent bg-transparent px-0 text-primary shadow-none hover:underline hover:underline-offset-4\",\n      },\n      size: {\n        default: \"min-h-10 px-5 py-2.5\",\n        sm: \"min-h-8 rounded-[var(--radius-sm)] px-3 py-1.5 text-xs\",\n        lg: \"min-h-12 px-7 py-3.5 text-base\",\n        icon: \"size-10 p-2.5\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  }\n)\n\ntype ButtonProps = React.ComponentProps<typeof ButtonPrimitive> &\n  VariantProps<typeof buttonVariants> & {\n    className?: string\n  }\n\nconst Button = React.forwardRef<React.ComponentRef<typeof ButtonPrimitive>, ButtonProps>(\n  (\n    {\n      className,\n      variant = \"default\",\n      size = \"default\",\n      nativeButton,\n      type,\n      ...props\n    },\n    ref\n  ) => {\n    return (\n      <ButtonPrimitive\n        ref={ref}\n        data-slot=\"button\"\n        nativeButton={nativeButton}\n        type={nativeButton === false ? undefined : type ?? \"button\"}\n        className={cn(buttonVariants({ variant, size }), className)}\n        {...props}\n      />\n    )\n  }\n)\n\nButton.displayName = \"Button\"\n\nexport { Button, type ButtonProps, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": "components/ui/button.tsx"
+    },
+    {
+      "path": "components/ui/card.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"surface-card surface-card-hover rounded-[var(--radius-lg)]\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div className={cn(\"flex flex-col gap-2 p-6\", className)} {...props} />\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"h3\">) {\n  return (\n    <h3 className={cn(\"font-serif text-2xl font-semibold tracking-tight\", className)} {...props} />\n  )\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"p\">) {\n  return <p className={cn(\"text-sm text-muted-foreground\", className)} {...props} />\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div className={cn(\"px-6 pb-6\", className)} {...props} />\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div className={cn(\"flex items-center gap-3 px-6 pb-6\", className)} {...props} />\n}\n\nexport { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }\n",
+      "type": "registry:ui",
+      "target": "components/ui/card.tsx"
+    },
+    {
+      "path": "components/ui/dialog.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Dialog as DialogPrimitive } from \"@base-ui/react/dialog\"\nimport { X } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { Button } from \"./button\"\n\nconst Dialog = DialogPrimitive.Root\nconst DialogTrigger = DialogPrimitive.Trigger\nconst DialogPortal = DialogPrimitive.Portal\nconst DialogClose = DialogPrimitive.Close\n\nfunction DialogBackdrop({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogPrimitive.Backdrop>) {\n  return (\n    <DialogPrimitive.Backdrop\n      className={cn(\n        \"fixed inset-0 min-h-dvh bg-black/70 backdrop-blur-sm transition-opacity duration-[var(--duration-fast)] ease-[var(--ease-smooth)] data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 supports-[-webkit-touch-callout:none]:absolute\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction DialogContent({\n  className,\n  children,\n  showCloseButton = true,\n  ...props\n}: React.ComponentProps<typeof DialogPrimitive.Popup> & {\n  showCloseButton?: boolean\n}) {\n  return (\n    <DialogPortal>\n      <DialogBackdrop />\n      <DialogPrimitive.Popup\n        className={cn(\n          \"fixed top-1/2 left-1/2 z-50 w-[min(32rem,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 rounded-[var(--radius-lg)] border border-white/10 bg-[rgba(10,10,10,0.95)] p-6 text-foreground shadow-[var(--shadow-xl)] outline-none transition-all duration-[var(--duration-normal)] ease-[var(--ease-smooth)] data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0\",\n          className\n        )}\n        {...props}\n      >\n        {showCloseButton ? (\n          <DialogClose\n            render={\n              <Button\n                variant=\"ghost\"\n                size=\"icon\"\n                className=\"absolute top-4 right-4 size-9 rounded-[var(--radius-sm)]\"\n              />\n            }\n          >\n            <X />\n          </DialogClose>\n        ) : null}\n        {children}\n      </DialogPrimitive.Popup>\n    </DialogPortal>\n  )\n}\n\nfunction DialogHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n  return <div className={cn(\"mb-6 flex flex-col gap-2\", className)} {...props} />\n}\n\nfunction DialogTitle({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogPrimitive.Title>) {\n  return (\n    <DialogPrimitive.Title\n      className={cn(\"font-serif text-3xl font-semibold tracking-tight\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction DialogDescription({\n  className,\n  ...props\n}: React.ComponentProps<typeof DialogPrimitive.Description>) {\n  return (\n    <DialogPrimitive.Description\n      className={cn(\"text-sm leading-6 text-muted-foreground\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction DialogFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"mt-6 flex flex-wrap justify-end gap-3\", className)}\n      {...props}\n    />\n  )\n}\n\nexport {\n  Dialog,\n  DialogBackdrop,\n  DialogClose,\n  DialogContent,\n  DialogDescription,\n  DialogFooter,\n  DialogHeader,\n  DialogPortal,\n  DialogTitle,\n  DialogTrigger,\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/dialog.tsx"
+    },
+    {
+      "path": "components/ui/input.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Input({ className, type = \"text\", ...props }: React.ComponentProps<\"input\">) {\n  return (\n    <input\n      type={type}\n      className={cn(\n        \"flex h-10 w-full rounded-[var(--radius)] border border-border bg-input px-3.5 py-2 text-sm text-foreground outline-none transition-[border-color,box-shadow,background-color] duration-[var(--duration-normal)] ease-[var(--ease-smooth)] placeholder:text-muted-foreground hover:border-white/15 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/20 disabled:pointer-events-none disabled:opacity-50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Input }\n",
+      "type": "registry:ui",
+      "target": "components/ui/input.tsx"
+    },
+    {
+      "path": "components/ui/pagination.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Pagination({ className, ...props }: React.ComponentProps<\"nav\">) {\n  return (\n    <nav\n      aria-label=\"Pagination\"\n      className={cn(\"flex items-center gap-2\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction PaginationButton({\n  active,\n  className,\n  ...props\n}: React.ComponentProps<\"button\"> & { active?: boolean }) {\n  return (\n    <button\n      className={cn(\n        \"inline-flex h-9 min-w-9 items-center justify-center rounded-[var(--radius)] border px-3 text-sm font-medium transition-[background-color,border-color,color] duration-[var(--duration-normal)] ease-[var(--ease-smooth)] disabled:pointer-events-none disabled:opacity-50\",\n        active\n          ? \"border-foreground bg-foreground text-background\"\n          : \"border-border bg-transparent text-foreground hover:border-white/20 hover:bg-secondary\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction PaginationGap({ className, ...props }: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      className={cn(\n        \"px-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Pagination, PaginationButton, PaginationGap }\n",
+      "type": "registry:ui",
+      "target": "components/ui/pagination.tsx"
+    },
+    {
+      "path": "components/ui/table.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Table({ className, ...props }: React.ComponentProps<\"table\">) {\n  return <table className={cn(\"w-full border-collapse\", className)} {...props} />\n}\n\nfunction TableHeader({ className, ...props }: React.ComponentProps<\"thead\">) {\n  return <thead className={cn(\"\", className)} {...props} />\n}\n\nfunction TableBody({ className, ...props }: React.ComponentProps<\"tbody\">) {\n  return <tbody className={cn(\"\", className)} {...props} />\n}\n\nfunction TableRow({ className, ...props }: React.ComponentProps<\"tr\">) {\n  return (\n    <tr\n      className={cn(\n        \"transition-colors duration-[var(--duration-normal)] ease-[var(--ease-smooth)] hover:bg-white/[0.02]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TableHead({ className, ...props }: React.ComponentProps<\"th\">) {\n  return (\n    <th\n      className={cn(\n        \"px-4 py-3 text-left font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TableCell({ className, ...props }: React.ComponentProps<\"td\">) {\n  return (\n    <td\n      className={cn(\n        \"border-t border-white/5 px-4 py-4 text-sm align-middle\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Table, TableBody, TableCell, TableHead, TableHeader, TableRow }\n",
+      "type": "registry:ui",
+      "target": "components/ui/table.tsx"
+    },
+    {
+      "path": "components/ui/tabs.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Tabs as TabsPrimitive } from \"@base-ui/react/tabs\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Tabs({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Root>) {\n  return (\n    <TabsPrimitive.Root\n      className={cn(\"flex flex-col gap-4\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction TabsList({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.List>) {\n  return (\n    <TabsPrimitive.List\n      className={cn(\n        \"relative flex w-fit flex-wrap gap-2 rounded-[var(--radius)] border border-white/10 bg-transparent p-1\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsTrigger({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Tab>) {\n  return (\n    <TabsPrimitive.Tab\n      className={cn(\n        \"relative z-[1] inline-flex min-h-10 items-center justify-center rounded-[calc(var(--radius)-4px)] border border-white/20 px-4 py-2 text-sm font-medium text-foreground outline-none transition-[background-color,border-color,color] duration-[var(--duration-normal)] ease-[var(--ease-smooth)] hover:bg-white/5 hover:border-white/30 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/20 data-[active]:border-foreground data-[active]:bg-foreground data-[active]:text-background\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TabsContent({\n  className,\n  ...props\n}: React.ComponentProps<typeof TabsPrimitive.Panel>) {\n  return (\n    <TabsPrimitive.Panel\n      className={cn(\n        \"surface-card rounded-[var(--radius-lg)] p-6 outline-none focus-visible:ring-3 focus-visible:ring-ring/20\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Tabs, TabsContent, TabsList, TabsTrigger }\n",
+      "type": "registry:ui",
+      "target": "components/ui/tabs.tsx"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "font-heading": "var(--font-serif)",
+      "font-sans": "var(--font-sans)",
+      "font-serif": "var(--font-serif)",
+      "font-mono": "var(--font-mono)"
+    },
+    "light": {
+      "background": "#050505",
+      "foreground": "#ebebeb",
+      "card": "rgba(255, 255, 255, 0.02)",
+      "card-foreground": "#ebebeb",
+      "popover": "rgba(255, 255, 255, 0.02)",
+      "popover-foreground": "#ebebeb",
+      "primary": "#10b981",
+      "primary-foreground": "#050505",
+      "secondary": "rgba(255, 255, 255, 0.08)",
+      "secondary-foreground": "#ebebeb",
+      "muted": "rgba(255, 255, 255, 0.08)",
+      "muted-foreground": "rgba(255, 255, 255, 0.4)",
+      "accent": "#10b981",
+      "accent-foreground": "#050505",
+      "destructive": "#ef4444",
+      "border": "rgba(255, 255, 255, 0.08)",
+      "input": "rgba(255, 255, 255, 0.08)",
+      "ring": "#10b981",
+      "chart-1": "#10b981",
+      "chart-2": "#34d399",
+      "chart-3": "#6ee7b7",
+      "chart-4": "#f59e0b",
+      "chart-5": "#3b82f6",
+      "radius": "1rem",
+      "radius-sm": "0.5rem",
+      "radius-md": "0.75rem",
+      "radius-lg": "1.5rem",
+      "radius-xl": "2rem",
+      "sidebar": "#050505",
+      "sidebar-foreground": "#ebebeb",
+      "sidebar-primary": "#10b981",
+      "sidebar-primary-foreground": "#050505",
+      "sidebar-accent": "rgba(255, 255, 255, 0.08)",
+      "sidebar-accent-foreground": "#ebebeb",
+      "sidebar-border": "rgba(255, 255, 255, 0.08)",
+      "sidebar-ring": "#10b981"
+    },
+    "dark": {
+      "background": "#050505",
+      "foreground": "#ebebeb",
+      "card": "rgba(255, 255, 255, 0.02)",
+      "card-foreground": "#ebebeb",
+      "popover": "rgba(255, 255, 255, 0.02)",
+      "popover-foreground": "#ebebeb",
+      "primary": "#10b981",
+      "primary-foreground": "#050505",
+      "secondary": "rgba(255, 255, 255, 0.08)",
+      "secondary-foreground": "#ebebeb",
+      "muted": "rgba(255, 255, 255, 0.08)",
+      "muted-foreground": "rgba(255, 255, 255, 0.4)",
+      "accent": "#10b981",
+      "accent-foreground": "#050505",
+      "destructive": "#ef4444",
+      "border": "rgba(255, 255, 255, 0.08)",
+      "input": "rgba(255, 255, 255, 0.08)",
+      "ring": "#10b981",
+      "chart-1": "#10b981",
+      "chart-2": "#34d399",
+      "chart-3": "#6ee7b7",
+      "chart-4": "#f59e0b",
+      "chart-5": "#3b82f6",
+      "radius": "1rem",
+      "radius-sm": "0.5rem",
+      "radius-md": "0.75rem",
+      "radius-lg": "1.5rem",
+      "radius-xl": "2rem",
+      "sidebar": "#050505",
+      "sidebar-foreground": "#ebebeb",
+      "sidebar-primary": "#10b981",
+      "sidebar-primary-foreground": "#050505",
+      "sidebar-accent": "rgba(255, 255, 255, 0.08)",
+      "sidebar-accent-foreground": "#ebebeb",
+      "sidebar-border": "rgba(255, 255, 255, 0.08)",
+      "sidebar-ring": "#10b981"
+    }
+  },
+  "css": {
+    "@import \"./chen-serif-fonts.css\"": {},
+    "@layer base": {
+      "*": {
+        "border-color": "var(--border)",
+        "outline-color": "color-mix(in oklab, var(--ring) 50%, transparent)"
+      },
+      ":root": {
+        "--font-sans": "\"Inter Variable\", -apple-system, BlinkMacSystemFont, sans-serif",
+        "--font-serif": "\"Newsreader Variable\", Georgia, serif",
+        "--font-mono": "\"Space Grotesk Variable\", monospace"
+      },
+      "html": {
+        "background-color": "var(--background)",
+        "color": "var(--foreground)"
+      },
+      "body": {
+        "background-color": "var(--background)",
+        "color": "var(--foreground)",
+        "font-family": "var(--font-sans)",
+        "line-height": "1.6",
+        "min-height": "100vh"
+      },
+      "::selection": {
+        "background": "rgba(16, 185, 129, 0.3)",
+        "color": "#ebebeb"
+      },
+      "h1, h2, h3, h4, h5, h6": {
+        "font-family": "var(--font-serif)",
+        "letter-spacing": "-0.02em"
+      }
+    },
+    "@layer components": {
+      ".surface-card": {
+        "background": "var(--card)",
+        "border": "1px solid var(--border)",
+        "border-radius": "var(--radius-lg)",
+        "box-shadow": "var(--shadow-sm)",
+        "backdrop-filter": "blur(12px)",
+        "-webkit-backdrop-filter": "blur(12px)"
+      },
+      ".surface-card-hover": {
+        "transition": "transform var(--duration-normal) var(--ease-smooth), border-color var(--duration-normal) var(--ease-smooth), box-shadow var(--duration-normal) var(--ease-smooth)"
+      },
+      ".surface-card-hover:hover": {
+        "border-color": "rgba(255, 255, 255, 0.15)",
+        "box-shadow": "var(--shadow-lg)",
+        "transform": "translateY(-2px)"
+      },
+      ".section-kicker": {
+        "font-family": "var(--font-mono)",
+        "font-size": "12px",
+        "font-weight": "500",
+        "text-transform": "uppercase",
+        "letter-spacing": "0.2em",
+        "color": "var(--primary)"
+      },
+      ".headline-hero": {
+        "font-family": "var(--font-serif)",
+        "font-size": "clamp(3.75rem, 8vw, 6rem)",
+        "font-weight": "300",
+        "line-height": "1"
+      },
+      ".text-balance-muted": {
+        "text-wrap": "pretty",
+        "color": "var(--muted-foreground)"
+      }
+    }
+  },
+  "type": "registry:style"
+}

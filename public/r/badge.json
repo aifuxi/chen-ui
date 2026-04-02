@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "title": "Chen Serif Badge",
+  "description": "Badge component for semantic status labels in the Chen Serif design system.",
+  "dependencies": [
+    "class-variance-authority@^0.7.1"
+  ],
+  "files": [
+    {
+      "path": "components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n  \"inline-flex items-center justify-center rounded-[var(--radius-sm)] border px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-colors duration-[var(--duration-normal)] ease-[var(--ease-smooth)]\",\n  {\n    variants: {\n      variant: {\n        default: \"border-border bg-secondary text-foreground\",\n        primary:\n          \"border-[rgba(16,185,129,0.3)] bg-[rgba(16,185,129,0.15)] text-primary\",\n        destructive:\n          \"border-[rgba(239,68,68,0.3)] bg-[rgba(239,68,68,0.15)] text-destructive\",\n        warning:\n          \"border-[rgba(245,158,11,0.3)] bg-[rgba(245,158,11,0.15)] text-[#f59e0b]\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  }\n)\n\ntype BadgeProps = React.ComponentProps<\"span\"> &\n  VariantProps<typeof badgeVariants>\n\nfunction Badge({ className, variant, ...props }: BadgeProps) {\n  return (\n    <span className={cn(badgeVariants({ variant }), className)} {...props} />\n  )\n}\n\nexport { Badge, badgeVariants, type BadgeProps }\n",
+      "type": "registry:ui",
+      "target": "components/ui/badge.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

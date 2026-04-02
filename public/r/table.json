@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table",
+  "title": "Chen Serif Table",
+  "description": "Data table primitives for the Chen Serif design system.",
+  "files": [
+    {
+      "path": "components/ui/table.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Table({ className, ...props }: React.ComponentProps<\"table\">) {\n  return <table className={cn(\"w-full border-collapse\", className)} {...props} />\n}\n\nfunction TableHeader({ className, ...props }: React.ComponentProps<\"thead\">) {\n  return <thead className={cn(\"\", className)} {...props} />\n}\n\nfunction TableBody({ className, ...props }: React.ComponentProps<\"tbody\">) {\n  return <tbody className={cn(\"\", className)} {...props} />\n}\n\nfunction TableRow({ className, ...props }: React.ComponentProps<\"tr\">) {\n  return (\n    <tr\n      className={cn(\n        \"transition-colors duration-[var(--duration-normal)] ease-[var(--ease-smooth)] hover:bg-white/[0.02]\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TableHead({ className, ...props }: React.ComponentProps<\"th\">) {\n  return (\n    <th\n      className={cn(\n        \"px-4 py-3 text-left font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction TableCell({ className, ...props }: React.ComponentProps<\"td\">) {\n  return (\n    <td\n      className={cn(\n        \"border-t border-white/5 px-4 py-4 text-sm align-middle\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Table, TableBody, TableCell, TableHead, TableHeader, TableRow }\n",
+      "type": "registry:ui",
+      "target": "components/ui/table.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

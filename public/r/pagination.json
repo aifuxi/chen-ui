@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "title": "Chen Serif Pagination",
+  "description": "Pagination primitives for long-list navigation in the Chen Serif design system.",
+  "files": [
+    {
+      "path": "components/ui/pagination.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Pagination({ className, ...props }: React.ComponentProps<\"nav\">) {\n  return (\n    <nav\n      aria-label=\"Pagination\"\n      className={cn(\"flex items-center gap-2\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction PaginationButton({\n  active,\n  className,\n  ...props\n}: React.ComponentProps<\"button\"> & { active?: boolean }) {\n  return (\n    <button\n      className={cn(\n        \"inline-flex h-9 min-w-9 items-center justify-center rounded-[var(--radius)] border px-3 text-sm font-medium transition-[background-color,border-color,color] duration-[var(--duration-normal)] ease-[var(--ease-smooth)] disabled:pointer-events-none disabled:opacity-50\",\n        active\n          ? \"border-foreground bg-foreground text-background\"\n          : \"border-border bg-transparent text-foreground hover:border-white/20 hover:bg-secondary\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nfunction PaginationGap({ className, ...props }: React.ComponentProps<\"span\">) {\n  return (\n    <span\n      className={cn(\n        \"px-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Pagination, PaginationButton, PaginationGap }\n",
+      "type": "registry:ui",
+      "target": "components/ui/pagination.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

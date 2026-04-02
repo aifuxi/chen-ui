@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "title": "Chen Serif Avatar",
+  "description": "Avatar primitives for the Chen Serif design system built on @base-ui/react/avatar.",
+  "dependencies": [
+    "@base-ui/react@^1.3.0",
+    "class-variance-authority@^0.7.1"
+  ],
+  "files": [
+    {
+      "path": "components/ui/avatar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Avatar as AvatarPrimitive } from \"@base-ui/react/avatar\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst avatarVariants = cva(\n  \"inline-flex items-center justify-center overflow-hidden rounded-[var(--radius)] bg-secondary text-foreground font-semibold select-none\",\n  {\n    variants: {\n      size: {\n        sm: \"size-8 text-xs\",\n        default: \"size-10 text-sm\",\n        lg: \"size-16 text-xl\",\n      },\n    },\n    defaultVariants: {\n      size: \"default\",\n    },\n  }\n)\n\ntype AvatarProps = React.ComponentProps<typeof AvatarPrimitive.Root> &\n  VariantProps<typeof avatarVariants>\n\nfunction Avatar({ className, size, ...props }: AvatarProps) {\n  return (\n    <AvatarPrimitive.Root\n      className={cn(avatarVariants({ size }), className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarImage({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Image>) {\n  return (\n    <AvatarPrimitive.Image\n      className={cn(\"size-full object-cover\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarFallback({\n  className,\n  ...props\n}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {\n  return (\n    <AvatarPrimitive.Fallback\n      className={cn(\"flex size-full items-center justify-center\", className)}\n      {...props}\n    />\n  )\n}\n\nfunction AvatarRing({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\n        \"inline-flex rounded-[var(--radius)] bg-[linear-gradient(135deg,var(--primary),var(--foreground))] p-0.5\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Avatar, AvatarFallback, AvatarImage, AvatarRing }\n",
+      "type": "registry:ui",
+      "target": "components/ui/avatar.tsx"
+    }
+  ],
+  "docs": "https://base-ui.com/react/components/avatar.md",
+  "type": "registry:ui"
+}

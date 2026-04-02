@@ -1,0 +1,109 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "chen-serif-theme",
+  "title": "Chen Serif Theme",
+  "description": "Core Chen Serif design tokens including colors, radii, shadows, and font aliases.",
+  "files": [
+    {
+      "path": "registry/chen-serif-fonts.css",
+      "content": "/* inter-latin-wght-normal */\n@font-face {\n  font-family: \"Inter Variable\";\n  font-style: normal;\n  font-display: swap;\n  font-weight: 100 900;\n  src: url(\"https://cdn.jsdelivr.net/npm/@fontsource-variable/inter@5.2.8/files/inter-latin-wght-normal.woff2\")\n    format(\"woff2-variations\");\n  unicode-range:\n    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,\n    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,\n    U+2215, U+FEFF, U+FFFD;\n}\n\n/* newsreader-latin-wght-normal */\n@font-face {\n  font-family: \"Newsreader Variable\";\n  font-style: normal;\n  font-display: swap;\n  font-weight: 200 800;\n  src: url(\"https://cdn.jsdelivr.net/npm/@fontsource-variable/newsreader@5.2.10/files/newsreader-latin-wght-normal.woff2\")\n    format(\"woff2-variations\");\n  unicode-range:\n    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,\n    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,\n    U+2215, U+FEFF, U+FFFD;\n}\n\n/* space-grotesk-latin-wght-normal */\n@font-face {\n  font-family: \"Space Grotesk Variable\";\n  font-style: normal;\n  font-display: swap;\n  font-weight: 300 700;\n  src: url(\"https://cdn.jsdelivr.net/npm/@fontsource-variable/space-grotesk@5.2.10/files/space-grotesk-latin-wght-normal.woff2\")\n    format(\"woff2-variations\");\n  unicode-range:\n    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,\n    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,\n    U+2215, U+FEFF, U+FFFD;\n}\n",
+      "type": "registry:file",
+      "target": "app/chen-serif-fonts.css"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "font-heading": "var(--font-serif)",
+      "font-sans": "var(--font-sans)",
+      "font-serif": "var(--font-serif)",
+      "font-mono": "var(--font-mono)"
+    },
+    "light": {
+      "background": "#050505",
+      "foreground": "#ebebeb",
+      "card": "rgba(255, 255, 255, 0.02)",
+      "card-foreground": "#ebebeb",
+      "popover": "rgba(255, 255, 255, 0.02)",
+      "popover-foreground": "#ebebeb",
+      "primary": "#10b981",
+      "primary-foreground": "#050505",
+      "secondary": "rgba(255, 255, 255, 0.08)",
+      "secondary-foreground": "#ebebeb",
+      "muted": "rgba(255, 255, 255, 0.08)",
+      "muted-foreground": "rgba(255, 255, 255, 0.4)",
+      "accent": "#10b981",
+      "accent-foreground": "#050505",
+      "destructive": "#ef4444",
+      "border": "rgba(255, 255, 255, 0.08)",
+      "input": "rgba(255, 255, 255, 0.08)",
+      "ring": "#10b981",
+      "chart-1": "#10b981",
+      "chart-2": "#34d399",
+      "chart-3": "#6ee7b7",
+      "chart-4": "#f59e0b",
+      "chart-5": "#3b82f6",
+      "radius": "1rem",
+      "radius-sm": "0.5rem",
+      "radius-md": "0.75rem",
+      "radius-lg": "1.5rem",
+      "radius-xl": "2rem",
+      "sidebar": "#050505",
+      "sidebar-foreground": "#ebebeb",
+      "sidebar-primary": "#10b981",
+      "sidebar-primary-foreground": "#050505",
+      "sidebar-accent": "rgba(255, 255, 255, 0.08)",
+      "sidebar-accent-foreground": "#ebebeb",
+      "sidebar-border": "rgba(255, 255, 255, 0.08)",
+      "sidebar-ring": "#10b981"
+    },
+    "dark": {
+      "background": "#050505",
+      "foreground": "#ebebeb",
+      "card": "rgba(255, 255, 255, 0.02)",
+      "card-foreground": "#ebebeb",
+      "popover": "rgba(255, 255, 255, 0.02)",
+      "popover-foreground": "#ebebeb",
+      "primary": "#10b981",
+      "primary-foreground": "#050505",
+      "secondary": "rgba(255, 255, 255, 0.08)",
+      "secondary-foreground": "#ebebeb",
+      "muted": "rgba(255, 255, 255, 0.08)",
+      "muted-foreground": "rgba(255, 255, 255, 0.4)",
+      "accent": "#10b981",
+      "accent-foreground": "#050505",
+      "destructive": "#ef4444",
+      "border": "rgba(255, 255, 255, 0.08)",
+      "input": "rgba(255, 255, 255, 0.08)",
+      "ring": "#10b981",
+      "chart-1": "#10b981",
+      "chart-2": "#34d399",
+      "chart-3": "#6ee7b7",
+      "chart-4": "#f59e0b",
+      "chart-5": "#3b82f6",
+      "radius": "1rem",
+      "radius-sm": "0.5rem",
+      "radius-md": "0.75rem",
+      "radius-lg": "1.5rem",
+      "radius-xl": "2rem",
+      "sidebar": "#050505",
+      "sidebar-foreground": "#ebebeb",
+      "sidebar-primary": "#10b981",
+      "sidebar-primary-foreground": "#050505",
+      "sidebar-accent": "rgba(255, 255, 255, 0.08)",
+      "sidebar-accent-foreground": "#ebebeb",
+      "sidebar-border": "rgba(255, 255, 255, 0.08)",
+      "sidebar-ring": "#10b981"
+    }
+  },
+  "css": {
+    "@import \"./chen-serif-fonts.css\"": {},
+    "@layer base": {
+      ":root": {
+        "--font-sans": "\"Inter Variable\", -apple-system, BlinkMacSystemFont, sans-serif",
+        "--font-serif": "\"Newsreader Variable\", Georgia, serif",
+        "--font-mono": "\"Space Grotesk Variable\", monospace"
+      }
+    }
+  },
+  "type": "registry:theme"
+}
