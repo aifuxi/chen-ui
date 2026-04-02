@@ -99,7 +99,7 @@ const principles = [
   {
     icon: Type,
     title: "Editorial typography",
-    body: "Newsreader leads the hierarchy, Inter carries body copy, and Space Grotesk labels the system.",
+    body: "Newsreader leads the hierarchy, Inter carries body copy, and JetBrains Mono now drives labels and system metadata.",
   },
   {
     icon: Layers3,
@@ -329,7 +329,8 @@ export default function Home() {
             <CardTitle>Three-font hierarchy</CardTitle>
             <CardDescription>
               Newsreader handles headlines, Inter stays readable in body copy,
-              and Space Grotesk is reserved for labels and system metadata.
+              and JetBrains Mono is now the default choice for labels and
+              system metadata.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-2">
@@ -554,7 +555,7 @@ export default function Home() {
                 {
                   icon: Type,
                   title: "字体系统",
-                  body: "Newsreader、Inter 与 Space Grotesk 的组合。",
+                  body: "Newsreader、Inter 与 JetBrains Mono 的组合。",
                 },
                 {
                   icon: Layers3,

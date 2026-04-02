@@ -106,7 +106,7 @@
           ":root": {
             "--font-sans": "\"Inter Variable\", -apple-system, BlinkMacSystemFont, sans-serif",
             "--font-serif": "\"Newsreader Variable\", Georgia, serif",
-            "--font-mono": "\"Space Grotesk Variable\", monospace"
+            "--font-mono": "\"JetBrains Mono Variable\", \"Space Grotesk Variable\", monospace"
           }
         }
       }
@@ -216,7 +216,7 @@
           ":root": {
             "--font-sans": "\"Inter Variable\", -apple-system, BlinkMacSystemFont, sans-serif",
             "--font-serif": "\"Newsreader Variable\", Georgia, serif",
-            "--font-mono": "\"Space Grotesk Variable\", monospace"
+            "--font-mono": "\"JetBrains Mono Variable\", \"Space Grotesk Variable\", monospace"
           },
           "html": {
             "background-color": "var(--background)",
