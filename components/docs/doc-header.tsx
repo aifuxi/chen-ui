@@ -1,11 +1,11 @@
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
 
 type DocHeaderProps = {
-  category: string
-  title: string
-  description: string
-  sourcePath?: string
-}
+  category: string;
+  title: string;
+  description: string;
+  sourcePath?: string;
+};
 
 export function DocHeader({
   category,
@@ -14,7 +14,7 @@ export function DocHeader({
   sourcePath,
 }: DocHeaderProps) {
   return (
-    <header className="mb-10 flex flex-col gap-4 border-b border-white/10 pb-8">
+    <header className="flex flex-col gap-4 border-b border-white/10 pb-8">
       <div className="flex items-center gap-3">
         <Badge variant="primary">{category}</Badge>
         {sourcePath ? (
@@ -24,9 +24,13 @@ export function DocHeader({
         ) : null}
       </div>
       <div className="flex flex-col gap-3">
-        <h1 className="!mt-0">{title}</h1>
-        <p className="max-w-3xl text-base text-muted-foreground">{description}</p>
+        <h1 className="!mt-0 max-w-3xl font-serif text-4xl font-light leading-tight tracking-[-0.02em] md:text-5xl">
+          {title}
+        </h1>
+        <p className="text-balance-muted max-w-3xl text-base md:text-lg">
+          {description}
+        </p>
       </div>
     </header>
-  )
+  );
 }
