@@ -1,3 +1,4 @@
+import { CodeBlock } from "@/components/docs/code-block"
 import { getRegistryInstallCommand } from "@/lib/docs"
 
 type InstallCommandProps = {
@@ -8,9 +9,9 @@ export function InstallCommand({ name }: InstallCommandProps) {
   return (
     <div className="mt-6 flex flex-col gap-3">
       <p className="section-kicker">Installation</p>
-      <pre>
-        <code>{getRegistryInstallCommand(name)}</code>
-      </pre>
+      <CodeBlock>
+        <code className="language-bash">{getRegistryInstallCommand(name)}</code>
+      </CodeBlock>
     </div>
   )
 }

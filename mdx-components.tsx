@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types"
 
+import { CodeBlock } from "@/components/docs/code-block"
 import { cn } from "@/lib/utils"
 
 const components: MDXComponents = {
@@ -40,15 +41,7 @@ const components: MDXComponents = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }) => (
-    <pre
-      className={cn(
-        "overflow-x-auto rounded-[var(--radius)] border border-white/10 bg-black/40 p-4 text-sm text-foreground shadow-[var(--shadow-sm)]",
-        className
-      )}
-      {...props}
-    />
-  ),
+  pre: CodeBlock,
   blockquote: ({ className, ...props }) => (
     <blockquote
       className={cn(
