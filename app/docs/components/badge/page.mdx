@@ -1,0 +1,54 @@
+import { ComponentPreview } from "@/components/docs/component-preview"
+import { DocHeader } from "@/components/docs/doc-header"
+import { InstallCommand } from "@/components/docs/install-command"
+import { Badge } from "@/components/ui/badge"
+import { getSourceFilePath } from "@/lib/docs"
+
+export const metadata = {
+  title: "Badge",
+  description: "Chen Serif badge component documentation.",
+}
+
+<DocHeader
+  category="Components"
+  title="Badge"
+  description="A compact label for status, taxonomy, and metadata."
+  sourcePath={getSourceFilePath("badge")}
+/>
+
+<InstallCommand name="badge" />
+
+## Usage
+
+```tsx
+import { Badge } from "@/components/ui/badge"
+
+export function Example() {
+  return <Badge variant="primary">Published</Badge>
+}
+```
+
+## Variants
+
+<ComponentPreview className="flex flex-wrap gap-2">
+  <Badge>Default</Badge>
+  <Badge variant="primary">Primary</Badge>
+  <Badge variant="warning">Warning</Badge>
+  <Badge variant="destructive">Destructive</Badge>
+</ComponentPreview>
+
+## Example In Context
+
+```tsx
+<div className="flex items-center gap-2">
+  <span>Article status</span>
+  <Badge variant="primary">Published</Badge>
+</div>
+```
+
+## Props
+
+| Prop | Type | Default |
+| --- | --- | --- |
+| `variant` | `"default" \| "primary" \| "warning" \| "destructive"` | `"default"` |
+| `className` | `string` | `undefined` |

@@ -1,0 +1,46 @@
+import { Input } from "@/components/ui/input"
+import { ComponentPreview } from "@/components/docs/component-preview"
+import { DocHeader } from "@/components/docs/doc-header"
+import { InstallCommand } from "@/components/docs/install-command"
+import { getSourceFilePath } from "@/lib/docs"
+
+export const metadata = {
+  title: "Input",
+  description: "Chen Serif input component documentation.",
+}
+
+<DocHeader
+  category="Components"
+  title="Input"
+  description="A dark glass input field that inherits the Chen Serif token system for borders, focus rings, and typography."
+  sourcePath={getSourceFilePath("input")}
+/>
+
+<InstallCommand name="input" />
+
+## Usage
+
+```tsx
+import { Input } from "@/components/ui/input"
+
+export function Example() {
+  return <Input placeholder="Search articles..." />
+}
+```
+
+## States
+
+<ComponentPreview
+  title="Input states"
+  description="Default, search, and disabled variants share one token set."
+  className="grid gap-4"
+>
+  <Input placeholder="Enter your name..." />
+  <Input type="search" placeholder="Search..." />
+  <Input disabled placeholder="Disabled" />
+</ComponentPreview>
+
+## Notes
+
+- The component uses semantic tokens from `globals.css`.
+- Hover and focus states are implemented with border and ring transitions instead of color jumps.
