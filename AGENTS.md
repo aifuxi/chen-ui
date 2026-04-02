@@ -33,6 +33,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - 优先复用 `app/globals.css` 中已有的 Chen Serif token，不要随意引入页面级临时颜色、圆角、阴影或字体值，除非这是一次明确的设计系统调整。
 - 能复用现有公共类时，不要重复造样式，优先考虑 `surface-card`、`surface-card-hover`、`section-kicker`、`headline-hero` 等约定。
 - 保持项目当前的排版方向：标题使用 `Newsreader Variable`，正文字体使用 `Inter Variable`，标签或等宽场景优先使用 `JetBrains Mono Variable`，并保留现有回退字体栈。
+- 需要展示品牌、语言或工具图标时，优先使用 `simple-icons`，并通过 Tailwind CSS v4 的动态 icon 类写法渲染，例如 `<span class="icon-[simple-icons--typescript]"></span>`；不要默认改用内联 SVG、emoji 或其他图标集。
 - 修改 UI 组件时，要维持当前深色、偏 editorial 的视觉语言，并沿用已有 CSS 变量命名。
 - `components.json` 已配置 `shadcn` 的 `base-nova` 风格、`lucide` 图标、RSC 开启以及 `app/globals.css` 作为样式入口，修改时应尊重这套配置。
 

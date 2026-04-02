@@ -17,6 +17,11 @@ type CodeElement = ReactElement<{
   className?: string
 }>
 
+type LanguageBadgeMeta = {
+  iconClassName: string
+  label: string
+}
+
 const getHighlighter = cache(() =>
   createHighlighter({
     themes: ["vitesse-black"],
@@ -68,6 +73,66 @@ function normalizeLanguage(className?: string): BundledLanguage | null {
   return null
 }
 
+function getLanguageBadgeMeta(language: BundledLanguage): LanguageBadgeMeta {
+  const meta: Partial<Record<BundledLanguage, LanguageBadgeMeta>> = {
+    bash: {
+      iconClassName: "icon-[simple-icons--gnubash]",
+      label: "Bash",
+    },
+    shellscript: {
+      iconClassName: "icon-[simple-icons--gnubash]",
+      label: "Shell",
+    },
+    shellsession: {
+      iconClassName: "icon-[simple-icons--gnubash]",
+      label: "Console",
+    },
+    javascript: {
+      iconClassName: "icon-[simple-icons--javascript]",
+      label: "JavaScript",
+    },
+    jsx: {
+      iconClassName: "icon-[simple-icons--react]",
+      label: "JSX",
+    },
+    typescript: {
+      iconClassName: "icon-[simple-icons--typescript]",
+      label: "TypeScript",
+    },
+    tsx: {
+      iconClassName: "icon-[simple-icons--react]",
+      label: "TSX",
+    },
+    json: {
+      iconClassName: "icon-[simple-icons--json]",
+      label: "JSON",
+    },
+    html: {
+      iconClassName: "icon-[simple-icons--html5]",
+      label: "HTML",
+    },
+    css: {
+      iconClassName: "icon-[simple-icons--css3]",
+      label: "CSS",
+    },
+    md: {
+      iconClassName: "icon-[simple-icons--markdown]",
+      label: "Markdown",
+    },
+    mdx: {
+      iconClassName: "icon-[simple-icons--mdx]",
+      label: "MDX",
+    },
+  }
+
+  return (
+    meta[language] ?? {
+      iconClassName: "icon-[simple-icons--simpleicons]",
+      label: bundledLanguagesInfo.find((item) => item.id === language)?.name ?? language,
+    }
+  )
+}
+
 export async function CodeBlock({ className, children, ...props }: PreProps) {
   const codeNode = isCodeElement(children) ? children : null
   const code = getCodeText(codeNode?.props.children ?? children).replace(/\n$/, "")
@@ -93,6 +158,7 @@ export async function CodeBlock({ className, children, ...props }: PreProps) {
   }
 
   const highlighter = await getHighlighter()
+  const languageBadge = getLanguageBadgeMeta(language)
   const html = highlighter.codeToHtml(code, {
     lang: language,
     theme: "vitesse-black",
@@ -101,8 +167,15 @@ export async function CodeBlock({ className, children, ...props }: PreProps) {
   return (
     <div className="group/code relative my-6 overflow-hidden rounded-[var(--radius-lg)] border border-white/10 bg-[#121212] shadow-[var(--shadow-sm)]">
       <div className="flex items-center justify-between border-b border-white/8 bg-black/20 px-4 py-3">
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-          {language}
+        <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+          <span
+            className={cn(
+              "size-3.5 shrink-0 text-foreground/70",
+              languageBadge.iconClassName
+            )}
+            aria-hidden="true"
+          />
+          <span>{languageBadge.label}</span>
         </span>
         <div className="opacity-100 md:opacity-0 md:transition md:duration-200 md:group-hover/code:opacity-100">
           <CopyCodeButton code={code} />
