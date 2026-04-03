@@ -1,0 +1,40 @@
+import { DocHeader } from "@/components/docs/doc-header"
+import { InstallCommand } from "@/components/docs/install-command"
+
+export const metadata = {
+  title: "Chen Serif Prose",
+  description: "Install the standalone Chen Serif prose utility for markdown and editorial content.",
+}
+
+<DocHeader
+  category="Getting Started"
+  title="Chen Serif Prose"
+  description="Install the standalone `.chen-serif-prose` registry style when you want Chen Serif markdown typography without pulling in the full component set."
+/>
+
+<InstallCommand name="chen-serif-prose" />
+
+## When to Use It
+
+- Use `chen-serif-prose` when your project already has its own components but you want Chen Serif's editorial markdown treatment.
+- Use `chen-serif` instead when you want the full design system package, including tokens, global utilities, and the core UI components.
+
+## What You Get
+
+- Heading, paragraph, link, list, inline code, blockquote, and table styles through the `.chen-serif-prose` class.
+- Dependency on `chen-serif-theme`, so the required font aliases and design tokens are installed automatically.
+
+## Usage
+
+```tsx
+export function ArticleBody() {
+  return (
+    <article className="chen-serif-prose">
+      <h1>Editorial heading</h1>
+      <p>
+        This paragraph picks up the Chen Serif prose typography.
+      </p>
+    </article>
+  )
+}
+```

@@ -15,6 +15,12 @@ export const docsItems: DocsItem[] = [
     description: "MDX-powered component docs and installation guidance for Chen Serif UI.",
   },
   {
+    href: "/docs/getting-started/chen-serif-prose",
+    label: "Chen Serif Prose",
+    category: "getting-started",
+    description: "Standalone prose utility for markdown typography and editorial content.",
+  },
+  {
     href: "/docs/components/button",
     label: "Button",
     category: "components",

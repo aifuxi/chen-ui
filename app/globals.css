@@ -237,4 +237,69 @@
     @apply text-pretty;
     color: var(--muted-foreground);
   }
+
+  .chen-serif-prose :is(h1) {
+    @apply font-serif text-4xl font-semibold tracking-tight md:text-5xl;
+  }
+
+  .chen-serif-prose :is(h2) {
+    @apply mt-10 font-serif text-3xl font-semibold tracking-tight;
+  }
+
+  .chen-serif-prose :is(h3) {
+    @apply mt-8 font-serif text-2xl font-semibold;
+  }
+
+  .chen-serif-prose :is(p) {
+    @apply text-sm leading-7 md:text-base;
+    color: var(--muted-foreground);
+  }
+
+  .chen-serif-prose :is(a) {
+    @apply underline-offset-4 hover:underline;
+    color: var(--primary);
+  }
+
+  .chen-serif-prose :is(ul) {
+    @apply ml-5 list-disc space-y-2 text-sm;
+    color: var(--muted-foreground);
+  }
+
+  .chen-serif-prose :is(ol) {
+    @apply ml-5 list-decimal space-y-2 text-sm;
+    color: var(--muted-foreground);
+  }
+
+  .chen-serif-prose :is(li) {
+    @apply pl-1;
+  }
+
+  .chen-serif-prose :is(h1, h2, h3, h4, h5, h6, p, li, blockquote, td, th) > code {
+    @apply rounded-[var(--radius-sm)] border px-1.5 py-0.5 font-mono text-[0.85em];
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--foreground);
+  }
+
+  .chen-serif-prose :is(blockquote) {
+    @apply border-l-2 pl-4 font-serif text-xl italic;
+    border-color: var(--primary);
+    color: color-mix(in srgb, var(--foreground) 90%, transparent);
+  }
+
+  .chen-serif-prose :is(table) {
+    @apply w-full border-collapse text-left;
+  }
+
+  .chen-serif-prose :is(th) {
+    @apply border-b px-4 py-3 font-mono text-[11px] font-medium uppercase tracking-[0.16em];
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--muted-foreground);
+  }
+
+  .chen-serif-prose :is(td) {
+    @apply border-b px-4 py-3 text-sm;
+    border-color: rgba(255, 255, 255, 0.05);
+    color: var(--foreground);
+  }
 }
