@@ -1,0 +1,89 @@
+import { ComponentPreview } from "@/components/docs/component-preview"
+import { DocHeader } from "@/components/docs/doc-header"
+import { InstallCommand } from "@/components/docs/install-command"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { getSourceFilePath } from "@/lib/docs"
+
+export const metadata = {
+  title: "Tabs",
+  description: "Chen Serif tabs component documentation.",
+}
+
+<DocHeader
+  category="Components"
+  title="Tabs"
+  description="Tabs primitives for switching between adjacent views without abandoning page context."
+  sourcePath={getSourceFilePath("tabs")}
+/>
+
+<InstallCommand name="tabs" />
+
+## Usage
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
+export function Example() {
+  return (
+    <Tabs defaultValue="overview">
+      <TabsList>
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="tokens">Tokens</TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview">Overview content</TabsContent>
+      <TabsContent value="tokens">Token content</TabsContent>
+    </Tabs>
+  )
+}
+```
+
+## Example
+
+<ComponentPreview
+  title="Sectioned content"
+  description="Tabs are built on Base UI and styled to match the Chen Serif glass surfaces."
+  className="bg-transparent p-0"
+>
+  <Tabs defaultValue="overview">
+    <TabsList>
+      <TabsTrigger value="overview">Overview</TabsTrigger>
+      <TabsTrigger value="tokens">Tokens</TabsTrigger>
+      <TabsTrigger value="registry">Registry</TabsTrigger>
+    </TabsList>
+    <TabsContent value="overview">
+      <div className="flex flex-col gap-2">
+        <p className="section-kicker">Overview</p>
+        <p className="text-sm text-muted-foreground">
+          Switch between related views while keeping the rest of the page anchored.
+        </p>
+      </div>
+    </TabsContent>
+    <TabsContent value="tokens">
+      <div className="grid gap-3 sm:grid-cols-3">
+        <div>
+          <p className="section-kicker">Radius</p>
+          <p className="mt-1 text-2xl font-serif">1rem</p>
+        </div>
+        <div>
+          <p className="section-kicker">Primary</p>
+          <p className="mt-1 text-2xl font-serif">#10b981</p>
+        </div>
+        <div>
+          <p className="section-kicker">Shadow</p>
+          <p className="mt-1 text-2xl font-serif">Sm</p>
+        </div>
+      </div>
+    </TabsContent>
+    <TabsContent value="registry">
+      <p className="text-sm text-muted-foreground">
+        Combine tabs with install commands, previews, or changelog summaries when one
+        section needs multiple adjacent states.
+      </p>
+    </TabsContent>
+  </Tabs>
+</ComponentPreview>
+
+## Notes
+
+- `TabsTrigger` must stay inside `TabsList`.
+- `TabsContent` already includes the Chen Serif surface treatment.

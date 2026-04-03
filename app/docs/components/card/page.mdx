@@ -1,0 +1,104 @@
+import { ArrowRight } from "lucide-react"
+
+import { ComponentPreview } from "@/components/docs/component-preview"
+import { DocHeader } from "@/components/docs/doc-header"
+import { InstallCommand } from "@/components/docs/install-command"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { getSourceFilePath } from "@/lib/docs"
+
+export const metadata = {
+  title: "Card",
+  description: "Chen Serif card component documentation.",
+}
+
+<DocHeader
+  category="Components"
+  title="Card"
+  description="Glass-surface card primitives for feature callouts, editorial summaries, and compact dashboard blocks."
+  sourcePath={getSourceFilePath("card")}
+/>
+
+<InstallCommand name="card" />
+
+## Usage
+
+```tsx
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
+export function Example() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Issue 09</CardTitle>
+        <CardDescription>Editorial system release notes.</CardDescription>
+      </CardHeader>
+      <CardContent>Composable content goes here.</CardContent>
+    </Card>
+  )
+}
+```
+
+## Basic Composition
+
+<ComponentPreview
+  title="Editorial card"
+  description="Compose cards with header, content, and footer primitives instead of ad-hoc wrappers."
+  className="grid gap-4 md:grid-cols-2"
+>
+  <Card>
+    <CardHeader>
+      <Badge variant="primary">Feature</Badge>
+      <CardTitle>Editorial release notes</CardTitle>
+      <CardDescription>
+        A compact surface for status, chronology, and lightweight actions.
+      </CardDescription>
+    </CardHeader>
+    <CardContent className="text-sm text-muted-foreground">
+      Ship component updates, registry notes, and migration context in one
+      readable block.
+    </CardContent>
+    <CardFooter>
+      <Button>
+        Read update
+        <ArrowRight data-icon="inline-end" />
+      </Button>
+    </CardFooter>
+  </Card>
+
+  <Card>
+    <CardHeader>
+      <CardTitle>Quiet metrics</CardTitle>
+      <CardDescription>Muted surfaces maintain hierarchy without flattening the page.</CardDescription>
+    </CardHeader>
+    <CardContent className="grid gap-3 sm:grid-cols-2">
+      <div>
+        <p className="section-kicker">Tokens</p>
+        <p className="mt-1 text-3xl font-serif">48</p>
+      </div>
+      <div>
+        <p className="section-kicker">Components</p>
+        <p className="mt-1 text-3xl font-serif">9</p>
+      </div>
+    </CardContent>
+  </Card>
+</ComponentPreview>
+
+## Notes
+
+- `Card` already includes the project glass surface treatment.
+- Prefer the full subcomponent set to preserve spacing consistency.

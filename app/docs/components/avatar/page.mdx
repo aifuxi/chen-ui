@@ -1,0 +1,91 @@
+import { ComponentPreview } from "@/components/docs/component-preview"
+import { DocHeader } from "@/components/docs/doc-header"
+import { InstallCommand } from "@/components/docs/install-command"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  AvatarRing,
+} from "@/components/ui/avatar"
+import { getSourceFilePath } from "@/lib/docs"
+
+export const metadata = {
+  title: "Avatar",
+  description: "Chen Serif avatar component documentation.",
+}
+
+<DocHeader
+  category="Components"
+  title="Avatar"
+  description="Avatar primitives for profile imagery, initials, and compact identity moments across the Chen Serif system."
+  sourcePath={getSourceFilePath("avatar")}
+/>
+
+<InstallCommand name="avatar" />
+
+## Usage
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+export function Example() {
+  return (
+    <Avatar>
+      <AvatarImage src="/avatar.jpg" alt="Avery Stone" />
+      <AvatarFallback>AS</AvatarFallback>
+    </Avatar>
+  )
+}
+```
+
+## Sizes
+
+<ComponentPreview
+  title="Avatar sizes"
+  description="Use the built-in size variants for compact metadata rows or more prominent profile moments."
+  className="flex flex-wrap items-center gap-4"
+>
+  <Avatar size="sm">
+    <AvatarFallback>AS</AvatarFallback>
+  </Avatar>
+  <Avatar>
+    <AvatarFallback>CS</AvatarFallback>
+  </Avatar>
+  <Avatar size="lg">
+    <AvatarFallback>UI</AvatarFallback>
+  </Avatar>
+</ComponentPreview>
+
+## With Images And Rings
+
+```tsx
+<AvatarRing>
+  <Avatar size="lg">
+    <AvatarImage src="https://i.pravatar.cc/128?img=12" alt="Avery Stone" />
+    <AvatarFallback>AS</AvatarFallback>
+  </Avatar>
+</AvatarRing>
+```
+
+<ComponentPreview
+  title="Accent ring"
+  description="Wrap the root in AvatarRing when you need a more branded presence."
+  className="flex flex-wrap items-center gap-5"
+>
+  <AvatarRing>
+    <Avatar size="lg">
+      <AvatarImage src="https://i.pravatar.cc/128?img=12" alt="Avery Stone" />
+      <AvatarFallback>AS</AvatarFallback>
+    </Avatar>
+  </AvatarRing>
+  <AvatarRing>
+    <Avatar>
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+  </AvatarRing>
+</ComponentPreview>
+
+## Notes
+
+- Always pair `AvatarImage` with `AvatarFallback`.
+- `AvatarRing` is optional and works as a purely decorative wrapper.

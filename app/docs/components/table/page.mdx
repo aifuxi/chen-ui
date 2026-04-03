@@ -1,0 +1,103 @@
+import { ComponentPreview } from "@/components/docs/component-preview"
+import { DocHeader } from "@/components/docs/doc-header"
+import { InstallCommand } from "@/components/docs/install-command"
+import { Badge } from "@/components/ui/badge"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import { getSourceFilePath } from "@/lib/docs"
+
+export const metadata = {
+  title: "Table",
+  description: "Chen Serif table component documentation.",
+}
+
+<DocHeader
+  category="Components"
+  title="Table"
+  description="Data table primitives for dense layouts that still preserve the project’s quiet editorial rhythm."
+  sourcePath={getSourceFilePath("table")}
+/>
+
+<InstallCommand name="table" />
+
+## Usage
+
+```tsx
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+
+export function Example() {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Issue</TableHead>
+          <TableHead>Status</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>Issue 09</TableCell>
+          <TableCell>Published</TableCell>
+        </TableRow>
+      </TableBody>
+    </Table>
+  )
+}
+```
+
+## Example
+
+<ComponentPreview
+  title="Editorial inventory"
+  description="Wrap the table in an overflow container when horizontal space is constrained."
+  className="overflow-x-auto"
+>
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead>Issue</TableHead>
+        <TableHead>Surface</TableHead>
+        <TableHead>Status</TableHead>
+        <TableHead>Updated</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Issue 09</TableCell>
+        <TableCell>Component docs</TableCell>
+        <TableCell><Badge variant="primary">Published</Badge></TableCell>
+        <TableCell>Today</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Issue 10</TableCell>
+        <TableCell>Registry refresh</TableCell>
+        <TableCell><Badge>Draft</Badge></TableCell>
+        <TableCell>Tomorrow</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Issue 11</TableCell>
+        <TableCell>Pattern audit</TableCell>
+        <TableCell><Badge variant="warning">Review</Badge></TableCell>
+        <TableCell>Next week</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</ComponentPreview>
+
+## Notes
+
+- Header cells are mono and uppercase by design to separate metadata from body content.
+- Row hover is intentionally subtle so dense data remains readable.

@@ -1,0 +1,75 @@
+import { ChevronLeft, ChevronRight } from "lucide-react"
+
+import { ComponentPreview } from "@/components/docs/component-preview"
+import { DocHeader } from "@/components/docs/doc-header"
+import { InstallCommand } from "@/components/docs/install-command"
+import {
+  Pagination,
+  PaginationButton,
+  PaginationGap,
+} from "@/components/ui/pagination"
+import { getSourceFilePath } from "@/lib/docs"
+
+export const metadata = {
+  title: "Pagination",
+  description: "Chen Serif pagination component documentation.",
+}
+
+<DocHeader
+  category="Components"
+  title="Pagination"
+  description="Compact pagination primitives for archive pages, data indexes, and editorial browse states."
+  sourcePath={getSourceFilePath("pagination")}
+/>
+
+<InstallCommand name="pagination" />
+
+## Usage
+
+```tsx
+import {
+  Pagination,
+  PaginationButton,
+  PaginationGap,
+} from "@/components/ui/pagination"
+
+export function Example() {
+  return (
+    <Pagination>
+      <PaginationButton disabled>Previous</PaginationButton>
+      <PaginationButton active>1</PaginationButton>
+      <PaginationButton>2</PaginationButton>
+      <PaginationGap>...</PaginationGap>
+      <PaginationButton>8</PaginationButton>
+      <PaginationButton>Next</PaginationButton>
+    </Pagination>
+  )
+}
+```
+
+## Example
+
+<ComponentPreview
+  title="Archive navigation"
+  description="Use active state for the current page and PaginationGap to compress long ranges."
+  className="flex flex-wrap items-center gap-2"
+>
+  <Pagination>
+    <PaginationButton aria-label="Previous page">
+      <ChevronLeft />
+    </PaginationButton>
+    <PaginationButton active>1</PaginationButton>
+    <PaginationButton>2</PaginationButton>
+    <PaginationButton>3</PaginationButton>
+    <PaginationGap>...</PaginationGap>
+    <PaginationButton>12</PaginationButton>
+    <PaginationButton aria-label="Next page">
+      <ChevronRight />
+    </PaginationButton>
+  </Pagination>
+</ComponentPreview>
+
+## Notes
+
+- `Pagination` is intentionally unopinionated about routing; wire it to links or handlers as needed.
+- Use `active` to promote the current page visually.

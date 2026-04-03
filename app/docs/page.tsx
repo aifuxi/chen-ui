@@ -31,14 +31,7 @@ export default function DocsIndexPage() {
               </Badge>
             </div>
             <h2 className="mt-0 text-2xl">{doc.label}</h2>
-            <p className="text-sm text-muted-foreground">
-              {doc.label === "Button" &&
-                "Variant-driven button component built on @base-ui/react/button."}
-              {doc.label === "Badge" &&
-                "Compact semantic label component for status and metadata."}
-              {doc.label === "Input" &&
-                "Dark glass input field with Chen Serif tokens for borders and focus."}
-            </p>
+            <p className="text-sm text-muted-foreground">{doc.description}</p>
           </Link>
         ))}
       </div>
