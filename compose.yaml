@@ -1,0 +1,11 @@
+services:
+  chen-ui:
+    image: ${CHEN_UI_IMAGE:-ghcr.io/OWNER/chen-ui}:${CHEN_UI_TAG:-latest}
+    container_name: chen-ui
+    restart: unless-stopped
+    ports:
+      - "${CHEN_UI_PORT:-3000}:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      HOSTNAME: 0.0.0.0

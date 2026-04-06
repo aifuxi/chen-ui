@@ -5,6 +5,7 @@ const withMDX = createMDX({})
 
 const nextConfig: NextConfig = {
   reactStrictMode: false,
+  output: "standalone",
   pageExtensions: ["ts", "tsx", "mdx"],
   images: {
     unoptimized: true,

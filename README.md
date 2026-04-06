@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chen UI
 
-## Getting Started
+Chen UI 是一个基于 Next 16、React 19、TypeScript 5 与 Tailwind CSS v4 的 App Router 项目，同时承载组件文档站和 shadcn registry。
 
-First, run the development server:
+## 本地开发
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+默认访问 `http://localhost:3000`。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Docker 构建
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+项目已启用 Next.js `standalone` 输出，可以直接构建容器镜像：
 
-## Learn More
+```bash
+docker build -t chen-ui:local .
+docker run --rm -p 3000:3000 chen-ui:local
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Docker Compose 部署
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+仓库根目录提供了 `compose.yaml`。它默认从 GitHub Container Registry 拉取镜像，部署前先设置镜像名和 tag：
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+export CHEN_UI_IMAGE=ghcr.io/<owner>/chen-ui
+export CHEN_UI_TAG=v0.1.0
+export CHEN_UI_PORT=3000
+docker compose up -d
+```
 
-## Deploy on Vercel
+更新版本时：
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+docker compose pull
+docker compose up -d
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## GitHub Actions 自动构建 Docker Image
+
+仓库包含工作流 `.github/workflows/release-image.yml`。
+
+- 触发条件：push 形如 `v1.2.3` 的 tag
+- 发布地址：`ghcr.io/<owner>/<repo>`
+- 推送标签：`latest`、完整版本号、`major.minor`
+
+发布示例：
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+镜像发布后，可配合 `compose.yaml` 在服务器上拉取并启动对应版本。
