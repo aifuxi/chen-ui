@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef, ReactElement, ReactNode } from "react"
-import { cache } from "react"
 import {
   bundledLanguages,
   bundledLanguagesInfo,
   createHighlighter,
+  type HighlighterGeneric,
   type BundledLanguage,
 } from "shiki"
 
@@ -22,12 +22,20 @@ type LanguageBadgeMeta = {
   label: string
 }
 
-const getHighlighter = cache(() =>
-  createHighlighter({
+declare global {
+  var __chenDocsShikiHighlighterPromise:
+    | Promise<HighlighterGeneric<BundledLanguage, "vitesse-black">>
+    | undefined
+}
+
+function getHighlighter() {
+  globalThis.__chenDocsShikiHighlighterPromise ??= createHighlighter({
     themes: ["vitesse-black"],
     langs: Object.keys(bundledLanguages),
   })
-)
+
+  return globalThis.__chenDocsShikiHighlighterPromise
+}
 
 function isCodeElement(node: ReactNode): node is CodeElement {
   return !!node && typeof node === "object" && "props" in node
